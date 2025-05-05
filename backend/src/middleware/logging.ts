@@ -1,14 +1,18 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 // ExpressRequestを拡張してstartTimeプロパティを追加
-declare module 'express' {
+declare module "express" {
   interface Request {
     startTime?: number;
   }
 }
 
 // ロギングミドルウェア - リクエスト開始時のログ
-export const loggingMiddleware = (req: Request, res: Response, next: NextFunction): void => {
+export const loggingMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
   // console警告を無視
   /* eslint-disable no-console */
 
@@ -16,16 +20,21 @@ export const loggingMiddleware = (req: Request, res: Response, next: NextFunctio
   req.startTime = Date.now();
 
   // リクエスト情報をログに出力
-  const clientIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} - クライアント: ${clientIP}`);
+  const clientIP =
+    req.headers["x-forwarded-for"] || req.socket.remoteAddress || "unknown";
+  console.log(
+    `[${new Date().toISOString()}] ${req.method} ${req.url} - クライアント: ${clientIP}`,
+  );
 
   // リクエストヘッダーとボディをログに出力（機密情報は除外）
-  if (req.method !== 'GET' && req.body) {
+  if (req.method !== "GET" && req.body) {
     const safeBody = { ...req.body };
     // パスワードなどの機密情報をマスク
-    if (safeBody.password) safeBody.password = '********';
+    if (safeBody.password) safeBody.password = "********";
 
-    console.log(`[${new Date().toISOString()}] リクエストボディ: ${JSON.stringify(safeBody)}`);
+    console.log(
+      `[${new Date().toISOString()}] リクエストボディ: ${JSON.stringify(safeBody)}`,
+    );
   }
 
   // レスポンス完了時のログ
@@ -36,7 +45,7 @@ export const loggingMiddleware = (req: Request, res: Response, next: NextFunctio
   res.end = function (chunk: any, encoding: any, callback: any) {
     const responseTime = Date.now() - (req.startTime || Date.now());
     console.log(
-      `[${new Date().toISOString()}] ${req.method} ${req.url} - ステータス: ${res.statusCode} - 処理時間: ${responseTime}ms`
+      `[${new Date().toISOString()}] ${req.method} ${req.url} - ステータス: ${res.statusCode} - 処理時間: ${responseTime}ms`,
     );
     return originalEnd.call(this, chunk, encoding, callback);
   };

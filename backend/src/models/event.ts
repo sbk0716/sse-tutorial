@@ -1,5 +1,5 @@
-import { Response } from 'express';
-import { MAX_CACHE_SIZE } from '../config/index';
+import { Response } from "express";
+import { MAX_CACHE_SIZE } from "../config/index";
 
 // イベントの型定義
 export interface Event {
@@ -13,7 +13,11 @@ export const eventCache: Event[] = [];
 export let eventId = 0;
 
 // イベント送信関数
-export const sendEvent = (res: Response, type: string, data: Record<string, unknown>): void => {
+export const sendEvent = (
+  res: Response,
+  type: string,
+  data: Record<string, unknown>,
+): void => {
   eventId++;
   res.write(`id: ${eventId}\n`);
   res.write(`event: ${type}\n`);

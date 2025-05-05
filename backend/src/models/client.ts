@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { Response } from "express";
 
 // クライアントの型定義
 export interface Client {
