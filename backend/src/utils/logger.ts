@@ -10,7 +10,7 @@ export const logInfo = (message: string): void => {
 
 // エラーログ
 export const logError = (message: string, error?: unknown): void => {
-  console.error(`[${new Date().toISOString()}] ERROR: ${message}`, error || '');
+  console.error(`[${new Date().toISOString()}] ERROR: ${message}`, error || "");
 };
 
 // 警告ログ
@@ -24,19 +24,27 @@ export const logDebug = (message: string): void => {
 };
 
 // SSE接続ログ
-export const logSSEConnection = (clientId: number, clientIP: string, userInfo?: string): void => {
-  const userText = userInfo ? ` - ユーザー: ${userInfo}` : '';
-  logInfo(`SSE接続確立 - クライアントID: ${clientId} - クライアント: ${clientIP}${userText}`);
+export const logSSEConnection = (
+  clientId: number,
+  clientIP: string,
+  userInfo?: string,
+): void => {
+  const userText = userInfo ? ` - ユーザー: ${userInfo}` : "";
+  logInfo(
+    `SSE接続確立 - クライアントID: ${clientId} - クライアント: ${clientIP}${userText}`,
+  );
 };
 
 // SSE切断ログ
 export const logSSEDisconnection = (
   clientId: number,
   duration: number,
-  userInfo?: string
+  userInfo?: string,
 ): void => {
-  const userText = userInfo ? ` - ユーザー: ${userInfo}` : '';
-  logInfo(`SSE接続終了 - クライアントID: ${clientId}${userText} - 接続時間: ${duration}秒`);
+  const userText = userInfo ? ` - ユーザー: ${userInfo}` : "";
+  logInfo(
+    `SSE接続終了 - クライアントID: ${clientId}${userText} - 接続時間: ${duration}秒`,
+  );
 };
 
 // ログインログ
@@ -44,20 +52,26 @@ export const logLogin = (
   username: string,
   success: boolean,
   reason: string,
-  clientIP: string
+  clientIP: string,
 ): void => {
   if (success) {
-    logInfo(`ログイン成功 - ユーザー: ${username} - 理由: ${reason} - クライアント: ${clientIP}`);
+    logInfo(
+      `ログイン成功 - ユーザー: ${username} - 理由: ${reason} - クライアント: ${clientIP}`,
+    );
   } else {
     logWarning(
-      `ログイン失敗 - ユーザー: ${username} - 理由: ${reason} - クライアント: ${clientIP}`
+      `ログイン失敗 - ユーザー: ${username} - 理由: ${reason} - クライアント: ${clientIP}`,
     );
   }
 };
 
 // メッセージ送信ログ
-export const logMessageSent = (message: string, recipientCount: number, clientIP: string): void => {
+export const logMessageSent = (
+  message: string,
+  recipientCount: number,
+  clientIP: string,
+): void => {
   logInfo(
-    `メッセージ送信 - 内容: "${message}" - 送信先: ${recipientCount}クライアント - 送信元: ${clientIP}`
+    `メッセージ送信 - 内容: "${message}" - 送信先: ${recipientCount}クライアント - 送信元: ${clientIP}`,
   );
 };

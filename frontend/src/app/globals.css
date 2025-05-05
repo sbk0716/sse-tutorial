@@ -1,0 +1,95 @@
+/* Tailwind CSSをインポート - スタイルのベースとなるユーティリティクラスを提供 */
+@import "tailwindcss";
+
+/* ルート変数の定義 - ライトモード用のカラーテーマ */
+:root {
+  --background: #ffffff; /* 白 */
+  --foreground: #111111; /* より濃い黒 - 視認性向上のため */
+  --card-bg: #f8f9fa; /* 薄いグレー背景 */
+  --card-border: #e5e7eb; /* グレーボーダー */
+  --event-bg: #f9fafb; /* 薄いグレー背景 */
+  --input-bg: #ffffff; /* 白 */
+  --input-border: #d1d5db; /* グレーボーダー */
+  --button-bg: #3b82f6; /* 青 - 機能的な色 */
+  --button-hover: #2563eb; /* 濃い青 - 機能的な色 */
+  --info-text: #059669; /* 緑 - 機能的な色 */
+  --time-text: #2563eb; /* 青 - 機能的な色 */
+}
+
+/* テーマの設定 - インラインテーマとして定義 */
+@theme inline {
+  /* カラーと書体の変数を設定 */
+  --color-background: var(--background); /* 背景色をルート変数から取得 */
+  --color-foreground: var(--foreground); /* 前景色をルート変数から取得 */
+  --font-sans: var(--font-geist-sans); /* サンセリフフォントをGeistに設定 */
+  --font-mono: var(--font-geist-mono); /* 等幅フォントをGeist Monoに設定 */
+}
+
+/* ダークモード設定 - next-themesライブラリで.darkクラスが適用された時 */
+.dark {
+  --background: #121212; /* 暗い背景 */
+  --foreground: #ffffff; /* 白 - 視認性向上のため */
+  --card-bg: #1e1e1e; /* 暗いグレー背景 */
+  --card-border: #2e2e2e; /* 暗いグレーボーダー */
+  --event-bg: #262626; /* 暗いグレー背景 */
+  --input-bg: #1e1e1e; /* 暗いグレー */
+  --input-border: #3e3e3e; /* 暗いグレーボーダー */
+  --button-bg: #3b82f6; /* 青 - 機能的な色 */
+  --button-hover: #2563eb; /* 濃い青 - 機能的な色 */
+  --info-text: #10b981; /* 緑 - 機能的な色 */
+  --time-text: #60a5fa; /* 青 - 機能的な色 */
+}
+
+/* ボディ要素のスタイル設定 */
+body {
+  background: var(--background); /* 背景色を変数から取得 */
+  color: var(--foreground); /* テキスト色を変数から取得 */
+  font-family: Arial, Helvetica, sans-serif; /* フォールバックフォント */
+}
+
+/* メインコンテナ */
+.bg-white.dark\:bg-gray-800 {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+/* 入力フィールド */
+input {
+  background-color: var(--input-bg);
+  color: var(--foreground);
+  border-color: var(--input-border);
+}
+
+/* ボタン */
+button.bg-blue-500 {
+  background-color: var(--button-bg);
+}
+button.bg-blue-500:hover {
+  background-color: var(--button-hover);
+}
+
+/* イベントリスト */
+.bg-white.dark\:bg-gray-900 {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* イベントアイテム */
+.bg-gray-100.dark\:bg-gray-800 {
+  background-color: var(--event-bg);
+  border: 1px solid var(--card-border);
+  margin-bottom: 0.5rem;
+}
+
+/* 情報テキスト */
+.text-green-600.dark\:text-green-400 {
+  color: var(--info-text);
+  font-weight: 600;
+}
+
+/* 時間テキスト */
+.text-blue-600.dark\:text-blue-400 {
+  color: var(--time-text);
+  font-weight: 600;
+}

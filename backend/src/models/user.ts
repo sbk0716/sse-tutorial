@@ -10,18 +10,18 @@ export interface User {
 export const users: User[] = [
   {
     id: 1,
-    username: 'user01',
+    username: "user01",
     // 'password'のハッシュ値
-    password: '$2b$10$rIC1ORaXrBsIbNL8OjYEbOQoYs492r.Vz7g/MPCnLAYfYrQu7tXcG', // 'password'
-    role: 'user'
+    password: "$2b$10$rIC1ORaXrBsIbNL8OjYEbOQoYs492r.Vz7g/MPCnLAYfYrQu7tXcG", // 'password'
+    role: "user",
   },
   {
     id: 2,
-    username: 'user02',
+    username: "user02",
     // 'password'のハッシュ値
-    password: '$2b$10$rIC1ORaXrBsIbNL8OjYEbOQoYs492r.Vz7g/MPCnLAYfYrQu7tXcG', // 'password'
-    role: 'user'
-  }
+    password: "$2b$10$rIC1ORaXrBsIbNL8OjYEbOQoYs492r.Vz7g/MPCnLAYfYrQu7tXcG", // 'password'
+    role: "user",
+  },
 ];
 
 // ユーザーを検索する関数
