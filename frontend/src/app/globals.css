@@ -93,3 +93,41 @@ button.bg-blue-500:hover {
   color: var(--time-text);
   font-weight: 600;
 }
+
+/* タイピングインジケーターのアニメーション */
+/* ChatGPTのような「考え中」の表示を実現するためのスタイル */
+/* カーソルが点滅するアニメーションを定義します */
+@keyframes typing {
+  0% {
+    border-color: transparent;
+  } /* 開始時は透明（見えない状態） */
+  50% {
+    border-color: currentColor;
+  } /* 中間点で現在のテキスト色（見える状態） */
+  100% {
+    border-color: transparent;
+  } /* 終了時は再び透明（見えない状態） */
+}
+
+/* タイピングインジケーター（点滅するカーソル）のスタイル */
+.typing-indicator {
+  display: inline-block; /* インラインブロック要素として表示 */
+  width: 0.5em; /* カーソルの幅 */
+  height: 1em; /* カーソルの高さ（テキストの高さに合わせる） */
+  background: transparent; /* 背景は透明 */
+  border-right: 2px solid currentColor; /* 右側のボーダーをカーソルとして使用 */
+  animation: typing 1s infinite; /* 1秒間隔で無限に繰り返すアニメーション */
+  margin-left: 0.25rem; /* 左側の余白（テキストとの間隔） */
+  vertical-align: middle; /* 垂直方向の配置を中央に */
+}
+
+/* プログレスバーのスタイル */
+/* ストリーミングメッセージの進捗を表示するためのスタイル */
+/* 幅が変化する際のアニメーション効果を定義します */
+.bg-blue-500 {
+  transition: width 0.3s ease-in-out; /* 幅の変化を0.3秒かけて滑らかに変化させる */
+}
+
+/* ここまで - グローバルスタイルの終了 */
+/* このCSSファイルは、アプリケーション全体に適用されるスタイルを定義しています */
+/* テーマ変数、コンポーネントスタイル、アニメーションなどが含まれています */

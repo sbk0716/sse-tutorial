@@ -94,6 +94,7 @@ npm start
 ### 認証
 
 - **POST /api/login**: ユーザー認証とJWTトークン発行
+
   - リクエスト: `{ "username": "user01", "password": "password" }`
   - レスポンス: `{ "token": "jwt-token-here" }`
 
@@ -103,6 +104,7 @@ npm start
 ### SSE接続
 
 - **GET /events**: 認証不要のSSEエンドポイント
+
   - レスポンス: SSEストリーム
 
 - **GET /secure-events**: 認証必須のSSEエンドポイント
